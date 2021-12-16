@@ -95,6 +95,14 @@
  * .form-input { ... }
  */
 
+//[dir="rtl"] select {
+//    background-position: left 0.5rem center;
+//}
+
+.form-select {
+    background-position: left 0.5rem center;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Classes\Mobile;
 use Illuminate\Contracts\Validation\Rule;
 
 class MobileRule implements Rule
@@ -25,7 +26,7 @@ class MobileRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match("/^(\+98|0098|98|0)?(9[0-9]{9})$/", en_num($value)) === 1;
+        return Mobile::check($value);
     }
 
     /**

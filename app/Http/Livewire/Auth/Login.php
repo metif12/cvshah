@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Classes\Mobile;
 use App\Providers\RouteServiceProvider;
 use App\Rules\GoogleRecaptchaRule;
 use App\Rules\MobileRule;
@@ -29,7 +30,9 @@ class Login extends Component
     {
         $this->validate();
 
-        if (!Auth::attempt(['mobile' => $this->mobile, 'password' => $this->password], $this->remember)) {
+        $mobile = Mobile::refactor($this->mobile);
+
+        if (!Auth::attempt(['mobile' => $mobile, 'password' => $this->password], $this->remember)) {
             $this->addError('mobile', trans('auth.failed'));
 
             return;

@@ -2,7 +2,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         function reCaptchaCallback(response) {
-        @this.set('g_recaptcha_response', response);
+            @this.set('g_recaptcha_response', response);
         }
 
         Livewire.on('resetReCaptcha', () => {

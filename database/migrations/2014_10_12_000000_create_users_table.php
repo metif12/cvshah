@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('mobile')->unique();
-            $table->string('national_code')->nullable();
-            $table->integer('sex')->default(0);
+            $table->integer('sex')->comment('1:man, 2:woman');
+            $table->timestamp('birthday');
             $table->timestamp('mobile_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

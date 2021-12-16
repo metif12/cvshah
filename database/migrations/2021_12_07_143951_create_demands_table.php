@@ -21,6 +21,7 @@ class CreateDemandsTable extends Migration
             $table->boolean('is_processed')->default(0);
             $table->string('file');
             $table->text('result')->nullable();
+            $table->text('full_result')->nullable();
             $table->timestamps();
         });
     }
