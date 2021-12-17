@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\API\V0\AddController;
-use App\Http\Controllers\API\V0\ReceiveController;
+use App\Http\Controllers\API\V0\Auth\LoginController;
+use App\Http\Controllers\API\V0\Auth\RegisterController;
+use App\Http\Controllers\API\V0\Demand\AddController;
+use App\Http\Controllers\API\V0\Demand\ReceiveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,12 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::prefix('v0')
+    ->group(function (){
 
-Route::prefix('v0/test')
-    ->group(function () {
-            Route::any('demands/add', AddController::class);
-            Route::any('demands/{demand}', ReceiveController::class);
+        Route::post('login', LoginController::class);
+        Route::post('register', RegisterController::class);
+
+        Route::middleware('auth:sanctum')
+            ->group(function () {
+
+                Route::any('/user', function (Request $request) {
+                    return $request->user();
+                });
+
+                Route::post('demands/add', AddController::class);
+                Route::any('demands/{demand}', ReceiveController::class);
+            });
     });
+
+

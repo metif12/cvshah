@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('mobile')->unique();
             $table->integer('sex')->comment('1:man, 2:woman');
-            $table->timestamp('birthday');
+            $table->date('birthday');
             $table->timestamp('mobile_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API\V0;
+namespace App\Http\Controllers\API\V0\Demand;
 
 use App\Http\Controllers\Controller;
 use App\Models\Demand;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ReceiveController extends Controller

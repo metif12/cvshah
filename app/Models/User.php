@@ -22,7 +22,7 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'birthday' => 'datetime',
+        'birthday' => 'date',
         'mobile_verified_at' => 'datetime',
     ];
 }
