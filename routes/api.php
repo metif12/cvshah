@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\V0\Auth\AuthorizationController;
 use App\Http\Controllers\API\V0\Auth\LoginController;
 use App\Http\Controllers\API\V0\Auth\RegisterController;
+use App\Http\Controllers\API\V0\Auth\VerifyController;
 use App\Http\Controllers\API\V0\Demand\AddController;
 use App\Http\Controllers\API\V0\Demand\ReceiveController;
 use Illuminate\Http\Request;
@@ -23,6 +25,8 @@ Route::prefix('v0')
 
         Route::post('login', LoginController::class);
         Route::post('register', RegisterController::class);
+        Route::post('authorization/code', AuthorizationController::class);
+        Route::post('verify', VerifyController::class);
 
         Route::middleware('auth:sanctum')
             ->group(function () {

@@ -62,6 +62,7 @@ class Register extends Component
                 'mobile' => Mobile::refactor($this->mobile),
                 'first_name' => $this->first_name,
                 'last_name' => $this->last_name,
+                'gender' => $this->gender,
                 'birthday' => Verta::createJalali($this->year, $this->month, $this->day)->getTimestamp(),
                 'password' => Hash::make($this->password),
             ]);

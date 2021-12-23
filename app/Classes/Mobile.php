@@ -11,7 +11,7 @@ class Mobile
      */
     public static function refactor($mobile): string
     {
-        $mobile = preg_replace("/^(\+98|0098|98|0)?(9[0-9]{9})$/", "0$2", en_num($mobile ?? ""));
+        $mobile = preg_replace("/^(\+98|0098|98|0)?(9[0-9]{9})$/", "0098$2", en_num($mobile ?? ""));
 
         if(!is_string($mobile)) throw new Exception('mobile number is not valid');
 
