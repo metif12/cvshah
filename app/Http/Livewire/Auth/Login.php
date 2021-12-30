@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Classes\Mobile;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Rules\GoogleRecaptchaRule;
 use App\Rules\MobileRule;
@@ -38,7 +39,7 @@ class Login extends Component
             return;
         }
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('panel.dashboard'));
     }
 
     public function render()

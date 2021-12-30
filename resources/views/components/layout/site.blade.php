@@ -10,16 +10,20 @@
 
         <x-slot name="nav">
             <x-nav.horizental>
-                <x-nav.horizental-link route="login">Home</x-nav.horizental-link>
+                <x-nav.horizental-link route="home">خانه</x-nav.horizental-link>
+                @auth
+                <x-nav.horizental-link route="panel.dashboard">پنل کاربری</x-nav.horizental-link>
+                @else
                 <x-nav.horizental-dropdown route="login">
-                    Home
+                    کاربران
                     <x-slot name="content">
                         <x-nav.vertical class="text-gray-900" class="w-48">
-                            <x-nav.vertical-link route="login">login</x-nav.vertical-link>
-                            <x-nav.vertical-link route="register">register</x-nav.vertical-link>
+                            <x-nav.vertical-link route="login">ورود</x-nav.vertical-link>
+                            <x-nav.vertical-link route="register">ثبت نام</x-nav.vertical-link>
                         </x-nav.vertical>
                     </x-slot>
                 </x-nav.horizental-dropdown>
+                @endauth
             </x-nav.horizental>
         </x-slot>
 

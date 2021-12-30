@@ -11,6 +11,10 @@ class Demand extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'image',
+    ];
+
     protected $casts = [
         'is_accepted' => 'bool',
         'is_processed' => 'bool',
