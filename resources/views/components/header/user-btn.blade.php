@@ -1,6 +1,6 @@
 <div x-data="{open: false}">
     <button @click="open = true">
-        <img src="" alt="" class="w-12 h-12 border-blue-400 border-2 shadow bg-gray-200 rounded-full">
+        <img src="{{ url('profile.png') }}" alt="" class="w-12 h-12 border-gray-400 border-2 shadow bg-gray-200 rounded-md">
     </button>
     <x-dropdown.dropdown class="w-48 mt-1" show_condition="open" close_callback="open = false">
         <x-nav.vertical class="text-gray-900">

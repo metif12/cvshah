@@ -34,6 +34,16 @@ class User extends Authenticatable
         return $this->hasMany(Demand::class);
     }
 
+    public function getNameAttribute()
+    {
+        return $this['first_name'] . ' ' . $this['last_name'];
+    }
+
+    public function getTitleAttribute()
+    {
+        return 'کاربر';
+    }
+
     public function getAuthorizationCodeAttribute()
     {
         $key = "users.{$this['id']}.authorization_code";

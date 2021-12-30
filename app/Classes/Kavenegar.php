@@ -5,10 +5,10 @@ namespace App\Classes;
 use Exception;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use Kavenegar\KavenegarApi;
 
 class Kavenegar
 {
-    const BASE_URL = 'https://api.kavenegar.com/v1';
 
     const VERIFY_LOOKUP_SMS_TYPE = 'sms';
     const VERIFY_LOOKUP_CALL_TYPE = 'call';
@@ -23,15 +23,9 @@ class Kavenegar
      */
     public static function verifyLookup(string $receptor, string $template, array $tokens, string $type= 'sms')
     {
-        $url = self::generateURL('verify', 'lookup');
+        $api = new KavenegarApi(config('services.kavenegar.key'));
 
-        $tokens['receptor'] = $receptor;
-        $tokens['template'] = $template;
-        $tokens['type'] = $type;
-
-        $result = Http::post($url, $tokens);
-
-        self::checkResponse($result);
+        $api->VerifyLookup($receptor, $tokens['token'], $tokens['token2'] ?? null, $tokens['token3'] ?? null, $template, $type);
     }
 
     /**
@@ -39,30 +33,8 @@ class Kavenegar
      */
     public static function smsSend(string $receptor, string $message)
     {
-        $url = self::generateURL('sms', 'send');
+        $api = new KavenegarApi(config('services.kavenegar.key'));
 
-        $data = [
-            'receptor' => $receptor,
-            'message' => $message,
-        ];
-
-        $result = Http::post($url, $data);
-
-        self::checkResponse($result);
-    }
-
-    /**
-     * @param Response $result
-     * @throws Exception
-     */
-    private static function checkResponse(Response $result): void
-    {
-        if (!$result->ok()) {
-            $data = $result->json();
-            $code = $data['return']['status'];
-            $message = $data['return']['message'];
-
-            throw new Exception("kavenegar($code): $message");
-        }
+        $api->Send(null, $receptor, $message);
     }
 }
