@@ -25,14 +25,14 @@ class AuthorizationController extends Controller
         if (!$user) return response()->json([
             'message' => 'error',
             'reason' => 'authorization failed',
-        ]);
+        ],422);
 
         $last_authorization_date_time = $user->last_authorization_date_time;
 
         if($last_authorization_date_time) return response()->json([
             'message' => 'too soon',
             'last_authorization_date_time' => $user->last_authorization_date_time,
-        ]);
+        ],422);
 
         try {
             Kavenegar::verifyLookup($user->mobile, 'authorization-code', ['token' => $user->authorization_code]);
@@ -43,8 +43,10 @@ class AuthorizationController extends Controller
             return response()->json([
                 'message' => 'error',
                 'reason' => 'internal error in sending authorization code'
-            ]);
+            ], 422);
         }
+
+        $user->last_authorization_date_time = now();
 
         return response()->json([
             'message' => 'ok',

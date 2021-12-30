@@ -12,7 +12,7 @@
             <!-- logo and name -->
             <h1 class="text-xl font-bold">
                 <a href="/">
-                    <x-logo></x-logo>
+                    <x-logo class="w-12 h-12"></x-logo>
                 </a>
             </h1>
             <!-- logo and name -->

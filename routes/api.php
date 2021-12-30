@@ -5,6 +5,7 @@ use App\Http\Controllers\API\V0\Auth\LoginController;
 use App\Http\Controllers\API\V0\Auth\RegisterController;
 use App\Http\Controllers\API\V0\Auth\VerifyController;
 use App\Http\Controllers\API\V0\Demand\AddController;
+use App\Http\Controllers\API\V0\Demand\IndexController;
 use App\Http\Controllers\API\V0\Demand\ReceiveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +36,10 @@ Route::prefix('v0')
                     return $request->user();
                 });
 
+                Route::get('demands', IndexController::class);
                 Route::post('demands/add', AddController::class);
-                Route::any('demands/{demand}', ReceiveController::class);
+                Route::get('demands/{demand}', ReceiveController::class);
+//                Route::post('demands/{demand}/edit', ReceiveController::class);
             });
     });
 

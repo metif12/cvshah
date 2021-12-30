@@ -20,8 +20,11 @@ class StaticAuth
     {
         $token = config('auth.static_token') ?? Str::random(32);
 
-        if($request->input('token') != $token)
-            abort(Response::HTTP_FORBIDDEN);
+        if($request->input('token') != $token) {
+            if($request->expectsJson()) return abort(422);
+
+            return redirect('login');
+        }
 
         return $next($request);
     }

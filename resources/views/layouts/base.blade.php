@@ -29,7 +29,7 @@
         @stack('head')
     </head>
 
-    <body>
+    <body class="bg-gray-50 h-screen">
         @yield('body')
 
         @livewireScripts

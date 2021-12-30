@@ -25,13 +25,13 @@ class VerifyController extends Controller
         if (!$user) return response()->json([
             'message' => 'error',
             'reason' => 'verification failed',
-        ]);
+        ], 422);
 
         if ($user->authorization_code != $request->code)
             return response()->json([
                 'message' => 'error',
                 'reason' => 'verification failed',
-            ]);
+            ], 422);
 
         $user->update(['mobile_verified_at' => now()]);
 

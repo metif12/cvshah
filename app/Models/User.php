@@ -29,6 +29,11 @@ class User extends Authenticatable
         'mobile_verified_at' => 'datetime',
     ];
 
+    public function demands()
+    {
+        return $this->hasMany(Demand::class);
+    }
+
     public function getAuthorizationCodeAttribute()
     {
         $key = "users.{$this['id']}.authorization_code";

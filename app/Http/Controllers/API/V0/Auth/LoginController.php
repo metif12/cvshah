@@ -29,19 +29,19 @@ class LoginController extends Controller
         if (!$user) return response()->json([
             'message' => 'error',
             'reason' => 'authentication failed',
-        ]);
+        ],422);
 
         $check = Hash::check($request->password, $user->password);
 
         if (!$check) return response()->json([
             'message' => 'error',
             'reason' => 'authentication failed',
-        ]);
+        ],422);
 
         if (!$user->mobile_verified_at) return response()->json([
             'message' => 'error',
             'reason' => 'mobile is not verified',
-        ]);
+        ],422);
 
         $tokenName = $request->userAgent();
 

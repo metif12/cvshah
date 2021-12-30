@@ -27,6 +27,7 @@ class AddController extends Controller
                 'is_accepted' => 1,
                 'is_processed' => 0,
                 'image' => $fileAddress,
+                'vector' => $request->vector,
             ]);
 
         return response()->json([
