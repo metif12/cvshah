@@ -20,7 +20,7 @@ trait FileUpload
 
         $fileExtension = $file->getClientOriginalExtension();
         $randomString = Str::random();
-        $dateTime = date('Ymd-His');
+        $dateTime = date('Ymd-His-');
 
         $fileName = "{$dateTime}{$randomString}{$fileHash}.{$fileExtension}";
 
