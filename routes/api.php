@@ -37,7 +37,7 @@ Route::prefix('v0')
                 });
 
                 Route::get('demands', IndexController::class);
-                Route::post('demands/add', AddController::class);
+                Route::post('demands', AddController::class);
                 Route::get('demands/{demand}', ReceiveController::class);
 //                Route::post('demands/{demand}/edit', ReceiveController::class);
             });

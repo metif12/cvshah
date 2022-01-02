@@ -13,6 +13,7 @@ class Demand extends Model
 
     protected $hidden = [
         'image',
+        'vector',
     ];
 
     protected $casts = [
