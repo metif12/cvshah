@@ -23,6 +23,8 @@ class CreateDemandsTable extends Migration
             $table->text('vector')->nullable();
             $table->text('result')->nullable();
             $table->text('full_result')->nullable();
+            $table->integer('tries')->default(0);
+            $table->integer('fails')->default(0);
             $table->timestamps();
         });
     }
