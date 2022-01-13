@@ -20,8 +20,9 @@ class CreateDemandsTable extends Migration
             $table->boolean('is_accepted')->default(0);
             $table->boolean('is_processed')->default(0);
             $table->string('image');
+            $table->string('out_image');
             $table->text('vector')->nullable();
-            $table->text('result')->nullable();
+            $table->string('result')->nullable();
             $table->text('full_result')->nullable();
             $table->integer('tries')->default(0);
             $table->timestamps();
