@@ -1,9 +1,9 @@
 import Alpine from 'alpinejs';
 import persist from '@alpinejs/persist'
 import intersect from '@alpinejs/intersect'
-import trap from '@alpinejs/trap'
+// import trap from '@alpinejs/trap'
 
-Alpine.plugin(trap)
+// Alpine.plugin(trap)
 Alpine.plugin(intersect)
 Alpine.plugin(persist)
 
